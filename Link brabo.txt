@@ -1,0 +1,1 @@
+http://api.weatherapi.com/v1/forecast.json?key=abeef68b3988478abca200752202010&q=Pelotas&days=1
