@@ -2,7 +2,8 @@ import wifimgr
 from time import sleep
 import machine
 import _thread
-import led_controle_mqtt
+import mqtt_controle
+import tempo
 
 try:
   import usocket as socket
@@ -19,6 +20,8 @@ if wlan is None:
 
 # codigo do do controle  apartir daqui.
 
-#t =_thread.start_new_thread(led_controle_mqtt.inicializar_mqtt_controle,())
+t =_thread.start_new_thread(mqtt_controle.inicializar,())
+t =_thread.start_new_thread(tempo.prev_temp,())
+
 
 

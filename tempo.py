@@ -1,21 +1,24 @@
 import urequests as requests
-import ujson as  json
+import ujson 
 import network
+import time
 
-def do_connect():
-    sta_if = network.WLAN(network.STA_IF)
-    if not sta_if.isconnected():
-        print('conectando')
-        sta_if.active(True)
-        sta_if.connect('#erro404#', 'NET10net@')
-        while not sta_if.isconnected():
-            pass
-    print('Config da rede:', sta_if.ifconfig())
+#função pegar prev do tempo
+def prev_temp():
+        while True: 
+            with open('config.json', 'r') as config_file:
+                dados = ujson.load(config_file)
 
-do_connect()
+            cidade = dados['cidade']
+            api_key = dados['API_Key']
+            print(cidade)
+            print(api_key)
+            res = requests.get(url= str("http://api.weatherapi.com/v1/forecast.json?key=" + api_key +"&q=" + cidade +"&days=1"))
+            dados = res.json()
+            with open('clima_t.json', 'w') as clima:
+                json.dump(dados,clima)
+            clima.close()
+            print("clima atualizado")
+            time.sleep(600)
 
-res = requests.get(url='http://api.weatherapi.com/v1/forecast.json?key=abeef68b3988478abca200752202010&q=Pelotas&days=1')
-dados = res.json()
 
-with open('clima_t.json', 'w') as clima:
-    json.dump(dados,clima)
