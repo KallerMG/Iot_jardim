@@ -20,8 +20,9 @@ if wlan is None:
 
 # codigo do do controle  apartir daqui.
 
-t =_thread.start_new_thread(mqtt_controle.inicializar,())
-t =_thread.start_new_thread(tempo.prev_temp,())
+t1 =_thread.start_new_thread(mqtt_controle.inicializar,())
+t2 =_thread.start_new_thread(tempo.prev_temp,())
+
 
 
 

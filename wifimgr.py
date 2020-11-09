@@ -2,9 +2,16 @@ import network
 import socket
 import ure
 import time
+import ujson
 
-ap_ssid = "WifiKaller" #ssid que ficara para configuração
-ap_password = "kaka1234" #senha para conectar a configuração
+
+with open('config.json', 'r') as config_file: #ler config.json onde ficas as configurações
+    dados = ujson.load(config_file)
+
+con_wifi = dados['Wifi']
+
+ap_ssid = con_wifi['usuario'] #ssid que ficara para configuração
+ap_password = con_wifi['senha'] #senha para conectar a configuração
 ap_authmode = 3  # WPA2 (modo)
 
 NETWORK_PROFILES = 'wifi.dat'

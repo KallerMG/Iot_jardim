@@ -1,6 +1,1 @@
-{
-  "Wifi": {
-    "usuario": "WifiKaller",
-    "senha": "kaka1234"
-  }
-}
+{"Wifi": {"senha": "kaka1234", "usuario": "WifiKaller"}, "ID": "44@2567", "API_Key": "abeef68b3988478abca200752202010", "MQTT": {"senha": "ugbkvzUR1sh9KKj", "topico": "RoNOkQ1qj9THsgb", "usuario": "EuXV2c6s8soinuU"}, "cidade": "porto alegre", "tempo_irri": "15", "temp_sensor": "34", "umi_sensor": "35", "ldr_sensor": "32"}

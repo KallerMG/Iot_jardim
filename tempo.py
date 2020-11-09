@@ -11,14 +11,17 @@ def prev_temp():
 
             cidade = dados['cidade']
             api_key = dados['API_Key']
-            print(cidade)
-            print(api_key)
-            res = requests.get(url= str("http://api.weatherapi.com/v1/forecast.json?key=" + api_key +"&q=" + cidade +"&days=1"))
-            dados = res.json()
+            cidade_v = cidade.replace(" ", "%20")
+            link = "http://api.weatherapi.com/v1/forecast.json?key="+ api_key + "&q=" + cidade_v +"&days=1"
+            print (link)
+            res = requests.get(url= link)
+            dado = res.json()
             with open('clima_t.json', 'w') as clima:
-                json.dump(dados,clima)
+                ujson.dump(dado,clima)
             clima.close()
             print("clima atualizado")
             time.sleep(600)
+
+
 
 
