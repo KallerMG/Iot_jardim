@@ -1,7 +1,8 @@
 import sensores
 import ujson
+import utime
+from time import sleep
 
-print(sensores.sensor_temp())
 
 
  
@@ -19,11 +20,20 @@ def inicializar():
         prev_temp = previ['avgtemp_c']
         prev_umidade = previ['avghumidity']
         prev_chuva = previ['daily_chance_of_rain']
-        
+        ano, mes, dia, hora, minuto, segundos, ms, x  = utime.localtime()
         if int(prev_chuva) >= 90:
-            if sensores.sensor_temp() > 31
-            print("bombear")
+            temp = sensores.sensor_temp()
+            if temp > 31:
+                if (hora - 3) >= 18 :
+                    print("bombear")
+                else:
+                    print("Não bombear")
+            
+            else:
+                print("Não bombear")
+        
         else:
             print("Não bombear")
+        sleep(5)
         
         
